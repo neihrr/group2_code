@@ -3,10 +3,21 @@ import Student from "./student.js";
 export default class App {
   constructor() {
     this._onClickBetter = this._onClickBetter.bind(this);
-
-
     let button = document.querySelector("#button");
     button.addEventListener("click", this._onClickBetter);
+
+    console.log("Hi");
+    console.log("I love web programming");
+    console.log("What about you?");
+
+    /*
+    console.log("Hi");
+
+    setTimeout(() => {
+      console.log("What about you?");
+    }, 2000);
+
+    console.log("I love web programming"); */
   }
 
   async _onClickBetter(event) {
