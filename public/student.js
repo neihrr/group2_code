@@ -6,16 +6,25 @@ export default class Student {
   }
 
   constructor(data) {
+    // Copy all key/values from data to this instance
     // this.id = data.id;
     // this.givenName = data.givenName;
-    // ...
-
-    /* Copy all key/values from data and put them in this */
     Object.assign(this, data);
 
+    // Store the API endpoint for this student
     this._uri = `/api/students/${this.id}`;
   }
 
+  // what data to send back when we convert the Student object to JSON(Ex:server updating)
+  toJSON() {
+    return {
+      id: this.id,
+      givenName: this.givenName,
+      dept: this.dept
+      // Add other relevant properties if needed
+    };
+  }
+  //Class Usage — how the class is used in practice (methods like load(), listCourses(), declare())
   async listCourses() {
     let res = await fetch(`${this._uri}/courses`);
     let json = await res.json();
